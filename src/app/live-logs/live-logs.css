@@ -1,0 +1,278 @@
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --background: #f5f6fa;
+  --text-color: #2c3e50;
+  --border-color: #dcdde1;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --severity-low: #2ecc71;
+  --severity-medium: #f1c40f;
+  --severity-high: #e74c3c;
+}
+
+.live-logs-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-section h2 {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin: 0;
+}
+
+.refresh-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: white;
+  color: var(--secondary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: var(--success-color);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.metrics-section,
+.system-health-section,
+.ai-insights-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: var(--primary-color);
+  margin: 0 0 1.5rem 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card h3 {
+  margin: 0 0 1.5rem 0;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.recharts-default-tooltip {
+  background: white !important;
+  border: none !important;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  padding: 0.8rem !important;
+}
+
+.recharts-tooltip-label {
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.recharts-tooltip-item {
+  color: var(--text-color) !important;
+  padding: 0.2rem 0 !important;
+}
+
+.recharts-legend-item {
+  cursor: pointer !important;
+}
+
+.error-message {
+  color: var(--error-color);
+  background-color: #fadbd8;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  gap: 0.5rem;
+}
+
+.loading-spinner::after {
+  content: '';
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--secondary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .metrics-section,
+  .system-health-section,
+  .ai-insights-section {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .live-logs-container {
+    padding: 1rem;
+  }
+
+  .header-section {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .header-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .refresh-status {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dashboard-grid {
+    gap: 1rem;
+  }
+
+  .metrics-section,
+  .system-health-section,
+  .ai-insights-section {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  .metric-card {
+    padding: 1rem;
+  }
+
+  .recharts-wrapper {
+    font-size: 0.9rem;
+  }
+}
+
+/* Add hover effect for sections */
+.metrics-section:hover,
+.system-health-section:hover,
+.ai-insights-section:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Add status indicators for metrics */
+.metric-card[data-status="healthy"] { border-left: 4px solid var(--success-color); }
+.metric-card[data-status="warning"] { border-left: 4px solid var(--severity-medium); }
+.metric-card[data-status="critical"] { border-left: 4px solid var(--error-color); }
+
+/* Dark theme support for charts */
+@media (prefers-color-scheme: dark) {
+  .recharts-cartesian-grid line {
+    stroke: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .recharts-text {
+    fill: #ecf0f1 !important;
+  }
+
+  .recharts-legend-item-text {
+    color: #ecf0f1 !important;
+  }
+}
